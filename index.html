@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adhitya Fajar Rachmadi, S.T. | Middleware Engineer & IT/Business Analyst</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          keyframes: {
+            marquee: {
+              '0%': { transform: 'translateX(0%)' },
+              '100%': { transform: 'translateX(-50%)' },
+            },
+            floatSlow: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-8px)' },
+            },
+            pulseGlow: {
+              '0%, 100%': { opacity: '0.45', transform: 'scale(1)' },
+              '50%': { opacity: '0.8', transform: 'scale(1.06)' },
+            }
+          },
+          animation: {
+            marquee: 'marquee 34s linear infinite',
+            floatSlow: 'floatSlow 6s ease-in-out infinite',
+            pulseGlow: 'pulseGlow 8s ease-in-out infinite',
+          }
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+
+    /* Modern Dark & Light Base (No ugly graph-paper boxes!) */
+    body {
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Masked Hero Spotlight Beams (Only at the very top, fades out smoothly) */
+    .hero-mesh-bg {
+      background:
+        radial-gradient(ellipse 80% 55% at 50% -10%, rgba(37, 99, 235, 0.28), rgba(6, 182, 212, 0.08) 45%, transparent 80%),
+        radial-gradient(circle 600px at 85% 20%, rgba(79, 70, 229, 0.16), transparent 70%),
+        radial-gradient(circle 500px at 12% 30%, rgba(14, 165, 233, 0.14), transparent 70%);
+    }
+
+    html:not(.dark) .hero-mesh-bg {
+      background:
+        radial-gradient(ellipse 80% 55% at 50% -10%, rgba(37, 99, 235, 0.15), rgba(6, 182, 212, 0.05) 45%, transparent 80%),
+        radial-gradient(circle 600px at 85% 20%, rgba(79, 70, 229, 0.08), transparent 70%),
+        radial-gradient(circle 500px at 12% 30%, rgba(14, 165, 233, 0.08), transparent 70%);
+    }
+
+    /* Subtle Perspective Beam in Hero Only (Masked so edges are 100% clean) */
+    .hero-perspective-dots {
+      background-image: radial-gradient(rgba(59, 130, 246, 0.28) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(ellipse 70% 55% at 50% 25%, #000 20%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 25%, #000 20%, transparent 75%);
+    }
+
+    /* Interactive Bento Card with Mouse-Tracking Blue Spotlight */
+    .bento-card {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .bento-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(
+        550px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(59, 130, 246, 0.13),
+        transparent 45%
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .bento-card:hover::before {
+      opacity: 1;
+    }
+
+    .bento-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .bento-card:hover {
+      border-color: rgba(59, 130, 246, 0.55);
+      box-shadow: 0 20px 45px -15px rgba(37, 99, 235, 0.22);
+    }
+
+    /* Pause marquee on hover */
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    /* Smooth inline accordion animation */
+    @keyframes slideDownFade {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-expand {
+      animation: slideDownFade 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Sleek Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #040814; }
+    ::-webkit-scrollbar-thumb { background: #1e3a8a; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+  </style>
+</head>
+<body class="bg-[#f8fafc] text-slate-900 dark:bg-[#040814] dark:text-slate-100 antialiased selection:bg-blue-600 selection:text-white transition-colors duration-300">
+  <!-- Ambient Cursor Spotlight -->
+  <div id="cursor-glow" class="pointer-events-none fixed inset-0 z-0 transition-opacity duration-300" style="background: radial-gradient(700px circle at 50% 300px, rgba(37, 99, 235, 0.09), transparent 70%);"></div>
+
+  <!-- App Container -->
+  <div id="app" class="relative z-10"></div>
+
+  <script src="/preview_app.js?v=hd6"></script>
+</body>
+</html>

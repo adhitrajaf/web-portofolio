@@ -44,13 +44,13 @@
   <style>
     html { scroll-behavior: smooth; }
 
-    /* Modern Dark & Light Base (No ugly graph-paper boxes!) */
+    /* Modern Dark & Light Base */
     body {
       position: relative;
       overflow-x: hidden;
     }
 
-    /* Masked Hero Spotlight Beams (Only at the very top, fades out smoothly) */
+    /* Masked Hero Spotlight Beams */
     .hero-mesh-bg {
       background:
         radial-gradient(ellipse 80% 55% at 50% -10%, rgba(37, 99, 235, 0.28), rgba(6, 182, 212, 0.08) 45%, transparent 80%),
@@ -65,7 +65,6 @@
         radial-gradient(circle 500px at 12% 30%, rgba(14, 165, 233, 0.08), transparent 70%);
     }
 
-    /* Subtle Perspective Beam in Hero Only (Masked so edges are 100% clean) */
     .hero-perspective-dots {
       background-image: radial-gradient(rgba(59, 130, 246, 0.28) 1px, transparent 1px);
       background-size: 28px 28px;
@@ -73,7 +72,6 @@
       -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 25%, #000 20%, transparent 75%);
     }
 
-    /* Interactive Bento Card with Mouse-Tracking Blue Spotlight */
     .bento-card {
       position: relative;
       overflow: hidden;
@@ -110,12 +108,10 @@
       box-shadow: 0 20px 45px -15px rgba(37, 99, 235, 0.22);
     }
 
-    /* Pause marquee on hover */
     .marquee-track:hover {
       animation-play-state: paused;
     }
 
-    /* Smooth inline accordion animation */
     @keyframes slideDownFade {
       from { opacity: 0; transform: translateY(-6px); }
       to { opacity: 1; transform: translateY(0); }
@@ -124,7 +120,6 @@
       animation: slideDownFade 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    /* Sleek Custom Scrollbar */
     ::-webkit-scrollbar { width: 8px; height: 8px; }
     ::-webkit-scrollbar-track { background: #040814; }
     ::-webkit-scrollbar-thumb { background: #1e3a8a; border-radius: 9999px; }
@@ -132,12 +127,8 @@
   </style>
 </head>
 <body class="bg-[#f8fafc] text-slate-900 dark:bg-[#040814] dark:text-slate-100 antialiased selection:bg-blue-600 selection:text-white transition-colors duration-300">
-  <!-- Ambient Cursor Spotlight -->
   <div id="cursor-glow" class="pointer-events-none fixed inset-0 z-0 transition-opacity duration-300" style="background: radial-gradient(700px circle at 50% 300px, rgba(37, 99, 235, 0.09), transparent 70%);"></div>
-
-  <!-- App Container -->
   <div id="app" class="relative z-10"></div>
-
-  <script src="/preview_app.js?v=hd6"></script>
+  <script src="/preview_app.js?v=hd7"></script>
 </body>
 </html>

@@ -1,4 +1,24 @@
 // Modern 2026 Bento Grid + Blue Glassmorphism Interactive Portfolio
+// Crisp Vector SVG Icons (Lucide / Heroicons Standard — No AI Emojis)
+const SVG_ICONS = {
+  layers: `<svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,
+  terminal: `<svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>`,
+  database: `<svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>`,
+  cpu: `<svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>`,
+  sliders: `<svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>`,
+  grid: `<svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>`,
+  globe: `<svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+  building: `<svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>`,
+  mapPin: `<svg class="w-3.5 h-3.5 shrink-0 inline-block text-blue-500 dark:text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
+  calendar: `<svg class="w-3.5 h-3.5 shrink-0 inline-block text-blue-500 dark:text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
+  moon: `<svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`,
+  sun: `<svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`,
+  download: `<svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`,
+  fileText: `<svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`,
+  lock: `<svg class="w-3 h-3 shrink-0 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`,
+  maximize: `<svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>`,
+};
+
 const PROFILE_DATA = {
   name: "Adhitya Fajar Rachmadi",
   degree: "S.T.",
@@ -22,7 +42,8 @@ const PROFILE_DATA = {
       label: "Middleware R&D & Enterprise IT/BA",
       detail: "Care Technologies × Zurich Indonesia",
       accent: "from-blue-500 to-cyan-400",
-      icon: "⚡",
+      logo: "/assets/logos/logo-zurich.svg",
+      logoAlt: "Zurich Indonesia",
       expandedText: "IT Programmer in Middleware R&D Department at PT Care Technologies & Dedicated IT and Business Analyst at Zurich Indonesia (Sept 2026 – Present)."
     },
     {
@@ -30,7 +51,8 @@ const PROFILE_DATA = {
       label: "Cum Laude S.T. Engineering",
       detail: "Highest GPA Graduate • UNS (2024)",
       accent: "from-indigo-500 to-blue-400",
-      icon: "🎓",
+      logo: "/assets/logos/logo-uns.png",
+      logoAlt: "Universitas Sebelas Maret (UNS)",
       expandedText: "Awarded Highest GPA Accomplishment in Electrical Engineering (Control, PLC/DCS & Industrial Automation) at Universitas Sebelas Maret."
     },
     {
@@ -38,7 +60,8 @@ const PROFILE_DATA = {
       label: "Bootcamp Dibimbing.id",
       detail: "97.93/100 Score • AI/ML Batch 6",
       accent: "from-cyan-500 to-blue-500",
-      icon: "🏆",
+      logo: "/assets/logos/logo-dibimbing-icon.png",
+      logoAlt: "Dibimbing.id",
       expandedText: "Ranked #1 Most Valuable Person (MVP) at Dibimbing.id AI/ML Bootcamp Batch 6 (Grade A+, 97.93/100) with production RAG & Computer Vision deployments."
     },
     {
@@ -46,7 +69,8 @@ const PROFILE_DATA = {
       label: "English Proficiency",
       detail: "TOEFL 597 • EF SET C1 Advanced",
       accent: "from-blue-600 to-indigo-500",
-      icon: "🌐",
+      logo: "/assets/logos/logo-efset.png",
+      logoAlt: "EF SET Certified",
       expandedText: "Certified C1 Advanced (61/100, C2 Reading 77 & C2 Writing 79) by EF SET and 597 Institutional TOEFL for multinational enterprise collaboration."
     },
   ],
@@ -745,7 +769,8 @@ const EDUCATION_DATA = [
     period: "Aug 2020 – Jul 2024",
     location: "Surakarta, Indonesia",
     badge: "Cum Laude • GPA 3.80 / 4.00",
-    icon: "🎓",
+    logo: "/assets/logos/logo-uns.png",
+    logoSecondary: null,
     highlights: [
       "Honors: Highest GPA Achiever in 5th & 7th Semesters; Recipient of Independent MBKM UNS Research Grant.",
       "Final Thesis: 'Prototype Design of an Automatic Damper System for Balancing Process for Factory Room Sterilization' — engineered rapid multi-room air pressure balancing.",
@@ -757,7 +782,8 @@ const EDUCATION_DATA = [
     period: "Apr 2025 – Sept 2025",
     location: "Jakarta, Indonesia",
     badge: "Top 1 MVP Graduate • 97.93 / 100 (Grade A+)",
-    icon: "🏆",
+    logo: "/assets/logos/logo-dibimbing-icon.png",
+    logoSecondary: "/assets/logos/logo-dibimbing-full.png",
     highlights: [
       "Selected as Top 1 Most Valuable Person (MVP) out of the entire cohort (Concept Test: 99.75/100, Engineering Projects: 96.00/100).",
       "Mastered production-grade Python backend APIs (FastAPI), SQL, Deep Learning (LSTM/GRU/CNN), Agentic RAG (LangChain/Qdrant), and MLOps (Docker/Airflow/MLflow).",
@@ -957,12 +983,12 @@ function renderApp() {
 
           <!-- Right Action Buttons (Never wraps or overflows) -->
           <div class="flex items-center gap-1.5 sm:gap-2 shrink-0 whitespace-nowrap">
-            <button onclick="toggleTheme()" class="flex items-center gap-1 px-2.5 sm:px-3 py-1.5 rounded-full border border-slate-200 dark:border-blue-500/30 bg-slate-100/80 dark:bg-[#0c1631] text-slate-700 dark:text-slate-200 hover:border-blue-500 text-xs font-semibold transition-all whitespace-nowrap shrink-0">
-              <span>${state.darkMode ? "🌙" : "☀️"}</span>
+            <button onclick="toggleTheme()" class="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full border border-slate-200 dark:border-blue-500/30 bg-slate-100/80 dark:bg-[#0c1631] text-slate-700 dark:text-slate-200 hover:border-blue-500 text-xs font-semibold transition-all whitespace-nowrap shrink-0">
+              ${state.darkMode ? SVG_ICONS.moon : SVG_ICONS.sun}
               <span class="hidden sm:inline">${state.darkMode ? "Dark" : "Light"}</span>
             </button>
-            <a href="${PROFILE_DATA.portfolioPdfUrl}" target="_blank" class="inline-flex items-center gap-1 px-3 sm:px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-semibold shadow-lg shadow-blue-600/30 transition-all whitespace-nowrap shrink-0">
-              <span>⬇</span>
+            <a href="${PROFILE_DATA.portfolioPdfUrl}" target="_blank" class="inline-flex items-center gap-1.5 px-3 sm:px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-semibold shadow-lg shadow-blue-600/30 transition-all whitespace-nowrap shrink-0">
+              ${SVG_ICONS.download}
               <span class="hidden sm:inline">Portfolio</span>
               <span>PDF</span>
             </a>
@@ -976,13 +1002,13 @@ function renderApp() {
         ${state.mobileMenuOpen ? `
           <div class="lg:hidden mt-2 rounded-2xl bg-white/95 dark:bg-[#081126]/95 backdrop-blur-2xl border border-slate-200 dark:border-blue-500/30 p-3 shadow-2xl animate-expand">
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
-              <a onclick="closeMobileMenu()" href="#overview" class="px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-[#0c1836] text-slate-800 dark:text-slate-100 hover:bg-blue-600 hover:text-white transition-all">⚡ Overview</a>
-              <a onclick="closeMobileMenu()" href="#education" class="px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-[#0c1836] text-slate-800 dark:text-slate-100 hover:bg-blue-600 hover:text-white transition-all">🎓 Education</a>
-              <a onclick="closeMobileMenu()" href="#experience" class="px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-[#0c1836] text-slate-800 dark:text-slate-100 hover:bg-blue-600 hover:text-white transition-all">💼 Experience</a>
-              <a onclick="closeMobileMenu()" href="#skills" class="px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-[#0c1836] text-slate-800 dark:text-slate-100 hover:bg-blue-600 hover:text-white transition-all">🛠️ Personal Skills</a>
-              <a onclick="closeMobileMenu()" href="#case-studies" class="px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-[#0c1836] text-slate-800 dark:text-slate-100 hover:bg-blue-600 hover:text-white transition-all">📊 Projects</a>
-              <a onclick="closeMobileMenu()" href="#credentials" class="px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-[#0c1836] text-slate-800 dark:text-slate-100 hover:bg-blue-600 hover:text-white transition-all">🏆 Certificates</a>
-              <a onclick="closeMobileMenu()" href="#contact" class="col-span-2 sm:col-span-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white">📬 Contact &amp; Download CV</a>
+              <a onclick="closeMobileMenu()" href="#overview" class="px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-[#0c1836] text-slate-800 dark:text-slate-100 hover:bg-blue-600 hover:text-white transition-all">Overview</a>
+              <a onclick="closeMobileMenu()" href="#education" class="px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-[#0c1836] text-slate-800 dark:text-slate-100 hover:bg-blue-600 hover:text-white transition-all">Education</a>
+              <a onclick="closeMobileMenu()" href="#experience" class="px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-[#0c1836] text-slate-800 dark:text-slate-100 hover:bg-blue-600 hover:text-white transition-all">Experience</a>
+              <a onclick="closeMobileMenu()" href="#skills" class="px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-[#0c1836] text-slate-800 dark:text-slate-100 hover:bg-blue-600 hover:text-white transition-all">Personal Skills</a>
+              <a onclick="closeMobileMenu()" href="#case-studies" class="px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-[#0c1836] text-slate-800 dark:text-slate-100 hover:bg-blue-600 hover:text-white transition-all">Projects</a>
+              <a onclick="closeMobileMenu()" href="#credentials" class="px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-[#0c1836] text-slate-800 dark:text-slate-100 hover:bg-blue-600 hover:text-white transition-all">Certificates</a>
+              <a onclick="closeMobileMenu()" href="#contact" class="col-span-2 sm:col-span-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white">Contact &amp; Download CV</a>
             </div>
           </div>
         ` : ""}
@@ -1037,7 +1063,8 @@ function renderApp() {
               <div class="rounded-2xl bg-slate-50/90 dark:bg-[#050b18]/90 border border-slate-200/80 dark:border-blue-500/20 p-3.5 sm:p-4 space-y-3">
                 <div class="flex flex-wrap items-center justify-between gap-2">
                   <span class="text-[11px] font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400 font-semibold flex items-center gap-1.5">
-                    <span>⚡ Interactive Role Focus</span>
+                    ${SVG_ICONS.layers}
+                    <span>Interactive Role Focus</span>
                     <span class="text-slate-400 dark:text-slate-500">(Click to Switch)</span>
                   </span>
                   <span class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-cyan-400 border border-blue-500/20">${pillar.badge}</span>
@@ -1084,7 +1111,8 @@ function renderApp() {
                 <span>View Projects</span>
               </a>
               <a href="${PROFILE_DATA.cvUrl}" target="_blank" class="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-slate-100/80 dark:bg-[#0a1226] hover:border-blue-500 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 text-xs sm:text-sm font-medium transition-all">
-                <span>📄 Download CV</span>
+                ${SVG_ICONS.fileText}
+                <span>Download CV</span>
               </a>
             </div>
           </div>
@@ -1112,11 +1140,13 @@ function renderApp() {
 
               <!-- Interactive Role Pills in a Clean 2-Column Grid -->
               <div class="grid grid-cols-2 gap-2">
-                <button onclick="setPillar(0)" class="px-2.5 py-1.5 rounded-xl bg-white/90 dark:bg-[#0a132c]/90 backdrop-blur-md border border-slate-200 dark:border-blue-500/35 shadow-sm text-[11px] font-semibold text-slate-800 dark:text-blue-100 hover:border-blue-400 transition-all text-center truncate">
-                  💻 Middleware R&amp;D
+                <button onclick="setPillar(0)" class="px-2.5 py-1.5 rounded-xl bg-white/90 dark:bg-[#0a132c]/90 backdrop-blur-md border border-slate-200 dark:border-blue-500/35 shadow-sm text-[11px] font-semibold text-slate-800 dark:text-blue-100 hover:border-blue-400 transition-all flex items-center justify-center gap-1.5 truncate">
+                  ${SVG_ICONS.terminal}
+                  <span class="truncate">Middleware R&amp;D</span>
                 </button>
-                <button onclick="setPillar(1)" class="px-2.5 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-md shadow-blue-600/25 text-[11px] font-semibold hover:opacity-95 transition-all text-center truncate">
-                  🏢 Dedicated @ Zurich
+                <button onclick="setPillar(1)" class="px-2.5 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-md shadow-blue-600/25 text-[11px] font-semibold hover:opacity-95 transition-all flex items-center justify-center gap-1.5 truncate">
+                  ${SVG_ICONS.building}
+                  <span class="truncate">Dedicated @ Zurich</span>
                 </button>
               </div>
             </div>
@@ -1169,7 +1199,7 @@ function renderApp() {
           </div>
         </div>
 
-        <!-- Bento Cells 4-7: 4 Key Highlight Cards (Always Open, No Click Required) -->
+        <!-- Bento Cells 4-7: 4 Key Highlight Cards (Always Open, With Official Institution/Brand Logos) -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           ${PROFILE_DATA.heroStats.map((stat) => {
             return `
@@ -1178,7 +1208,9 @@ function renderApp() {
                   <div class="h-1 w-14 rounded-full bg-gradient-to-r ${stat.accent} mb-4"></div>
                   <div class="flex items-center justify-between gap-2 mb-1.5">
                     <div class="text-2xl font-display font-bold text-slate-900 dark:text-white">${stat.value}</div>
-                    <span class="w-9 h-9 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-base">${stat.icon}</span>
+                    <div class="h-10 min-w-[40px] px-2 rounded-xl bg-white dark:bg-white/95 border border-slate-200/80 dark:border-blue-400/30 shadow-sm flex items-center justify-center shrink-0">
+                      <img src="${stat.logo}" alt="${stat.logoAlt || stat.label}" class="max-h-6 max-w-[64px] w-auto object-contain" />
+                    </div>
                   </div>
                   <div class="text-xs sm:text-sm font-bold text-blue-600 dark:text-blue-400">${stat.label}</div>
                   <div class="text-[11px] font-mono text-slate-500 dark:text-slate-400 mt-0.5">${stat.detail}</div>
@@ -1201,7 +1233,7 @@ function renderApp() {
 
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20 relative z-10">
         
-        <!-- Part 1: Education Bento Cards (Always Visible) -->
+        <!-- Part 1: Education Bento Cards (Official UNS & Dibimbing.id Logos) -->
         <div>
           <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
             <div class="space-y-1.5">
@@ -1221,16 +1253,19 @@ function renderApp() {
                 <div class="h-1.5 w-20 rounded-full bg-gradient-to-r ${idx === 0 ? "from-blue-600 to-cyan-400" : "from-indigo-500 to-blue-400"}"></div>
                 <div class="flex flex-wrap items-center justify-between gap-2">
                   <span class="px-3.5 py-1 rounded-full text-xs font-mono font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm">${edu.badge}</span>
-                  <span class="text-xs font-mono text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-[#0d1936] px-3 py-1 rounded-full border border-slate-200 dark:border-blue-500/20">🗓 ${edu.period}</span>
+                  <span class="inline-flex items-center gap-1.5 text-xs font-mono text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-[#0d1936] px-3 py-1 rounded-full border border-slate-200 dark:border-blue-500/20">${SVG_ICONS.calendar} <span>${edu.period}</span></span>
                 </div>
-                <div class="flex items-start gap-3.5">
-                  <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/25 flex items-center justify-center text-2xl shrink-0">
-                    ${edu.icon}
+                <div class="flex items-center gap-4">
+                  <div class="w-16 h-16 rounded-2xl bg-white dark:bg-white/95 border border-slate-200/90 dark:border-blue-400/30 p-2.5 flex items-center justify-center shadow-md shrink-0">
+                    <img src="${edu.logo}" alt="${edu.institution}" class="max-h-full max-w-full object-contain" />
                   </div>
-                  <div>
-                    <h3 class="font-display text-xl font-bold text-slate-900 dark:text-white">${edu.institution}</h3>
+                  <div class="min-w-0 flex-1">
+                    <div class="flex flex-wrap items-center gap-2">
+                      <h3 class="font-display text-lg sm:text-xl font-bold text-slate-900 dark:text-white">${edu.institution}</h3>
+                      ${edu.logoSecondary ? `<span class="hidden sm:inline-flex items-center px-2.5 py-0.5 rounded-lg bg-white border border-slate-200/80"><img src="${edu.logoSecondary}" alt="${edu.institution}" class="h-4 w-auto object-contain" /></span>` : ""}
+                    </div>
                     <p class="text-sm font-semibold text-blue-600 dark:text-blue-400 mt-0.5">${edu.degree}</p>
-                    <p class="text-xs font-mono text-slate-500 dark:text-slate-400 mt-1">📍 ${edu.location}</p>
+                    <p class="text-xs font-mono text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-1.5">${SVG_ICONS.mapPin} <span>${edu.location}</span></p>
                   </div>
                 </div>
                 <ul class="space-y-2.5 pt-3 border-t border-slate-200/70 dark:border-blue-500/15">
@@ -1307,7 +1342,7 @@ function renderApp() {
                               : "bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20"
                           }">${exp.isCurrent ? "● " : ""}${exp.period}</span>
                           ${exp.clientBadge ? `<span class="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 border border-indigo-500/25">${exp.clientBadge}</span>` : ""}
-                          <span class="text-xs font-mono text-slate-400">📍 ${exp.location}</span>
+                          <span class="inline-flex items-center gap-1 text-xs font-mono text-slate-400">${SVG_ICONS.mapPin} <span>${exp.location}</span></span>
                         </div>
                         <div class="flex flex-wrap items-baseline gap-2 pt-0.5">
                           <h3 class="font-display font-bold text-lg sm:text-xl text-blue-600 dark:text-blue-400">${exp.company}</h3>
@@ -1388,14 +1423,44 @@ function renderApp() {
           </div>
         </div>
 
-        <!-- Category Selector Bento Tabs -->
+        <!-- Category Selector Bento Tabs (Official Tech Logos + Vector Icons, Zero Emojis) -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 mb-8">
           ${[
-            { id: "middleware", label: "Middleware, Backend & Languages", badge: "Core Focus", icon: "⚡" },
-            { id: "database", label: "SQL Server, Data & Cloud/MLOps", badge: "Data & Infra", icon: "🗄️" },
-            { id: "aiml", label: "ML Frameworks & AI", badge: "AI Capability", icon: "🧠" },
-            { id: "industrial", label: "Electrical & Industrial PLC/DCS", badge: "Hardware", icon: "⚙️" },
-            { id: "all", label: `All Personal Skills (${SKILLS.length})`, badge: "Full Stack", icon: "✨" },
+            {
+              id: "middleware",
+              label: "Middleware, Backend & Languages",
+              badge: "Core Focus",
+              logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dotnetcore/dotnetcore-original.svg",
+              svg: SVG_ICONS.terminal,
+            },
+            {
+              id: "database",
+              label: "SQL Server, Data & Cloud/MLOps",
+              badge: "Data & Infra",
+              logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg",
+              svg: SVG_ICONS.database,
+            },
+            {
+              id: "aiml",
+              label: "ML Frameworks & AI",
+              badge: "AI Capability",
+              logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg",
+              svg: SVG_ICONS.cpu,
+            },
+            {
+              id: "industrial",
+              label: "Electrical & Industrial PLC/DCS",
+              badge: "Hardware",
+              logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/arduino/arduino-original.svg",
+              svg: SVG_ICONS.sliders,
+            },
+            {
+              id: "all",
+              label: `All Personal Skills (${SKILLS.length})`,
+              badge: "Full Stack",
+              logo: null,
+              svg: SVG_ICONS.grid,
+            },
           ].map((cat) => {
             const active = state.skillCategory === cat.id;
             return `
@@ -1404,8 +1469,16 @@ function renderApp() {
                   ? "bg-gradient-to-br from-blue-600 to-indigo-600 text-white border-blue-400 shadow-xl shadow-blue-600/25"
                   : "bg-white dark:bg-[#081126] border-slate-200/80 dark:border-blue-500/20 text-slate-700 dark:text-slate-300"
               }">
-                <div class="flex items-center justify-between mb-2">
-                  <span class="text-base">${cat.icon}</span>
+                <div class="flex items-center justify-between mb-2.5">
+                  <span class="w-8 h-8 rounded-xl flex items-center justify-center ${
+                    cat.logo
+                      ? "bg-white p-1.5 shadow-sm border border-slate-200/80"
+                      : active
+                      ? "bg-white/20 text-white"
+                      : "bg-blue-500/10 text-blue-600 dark:text-cyan-400 border border-blue-500/20"
+                  }">
+                    ${cat.logo ? `<img src="${cat.logo}" alt="${cat.label}" class="w-full h-full object-contain" />` : cat.svg}
+                  </span>
                   <span class="text-[10px] font-mono px-2.5 py-0.5 rounded-full ${active ? "bg-white/20 text-white" : "bg-blue-500/10 text-blue-600 dark:text-blue-400"}">${cat.badge}</span>
                 </div>
                 <div class="text-xs font-bold leading-snug">${cat.label}</div>
@@ -1498,7 +1571,7 @@ function renderApp() {
               <span class="w-3 h-3 rounded-full bg-amber-500"></span>
               <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
               <div class="ml-3 px-3.5 py-1 rounded-full bg-white dark:bg-[#0b152e] border border-slate-200 dark:border-blue-500/20 text-[11px] font-mono text-slate-500 dark:text-blue-300 flex items-center gap-2">
-                <span>🔒</span>
+                ${SVG_ICONS.lock}
                 <span class="truncate max-w-[220px] sm:max-w-md">${currentCase.urlDisplay}</span>
               </div>
             </div>
@@ -1569,7 +1642,8 @@ function renderApp() {
               <div class="relative group rounded-2xl bg-slate-100 dark:bg-[#050a17] border border-slate-200 dark:border-blue-500/25 overflow-hidden aspect-[16/10] flex items-center justify-center shadow-inner">
                 <img src="${displayedImage}" alt="${currentSlide.title}" class="w-full h-full object-contain p-2 sm:p-3 transition-transform duration-300 group-hover:scale-[1.02]" />
                 <button onclick="openLightbox('${displayedImage}', '${currentCase.title} — ${currentSlide.title}')" class="absolute top-3 right-3 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-900/90 hover:bg-blue-600 text-white text-xs font-mono backdrop-blur-md border border-white/15 shadow-lg transition-all">
-                  <span>🔍 Fullscreen</span>
+                  ${SVG_ICONS.maximize}
+                  <span>Fullscreen</span>
                 </button>
                 <div class="absolute bottom-3 left-3 px-3 py-1 rounded-lg bg-slate-900/85 text-white text-[11px] font-mono backdrop-blur-md border border-white/10">
                   ${currentSlide.badge}
@@ -1578,7 +1652,7 @@ function renderApp() {
 
               ${currentSlide.secondaryImage ? `
                 <div class="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-blue-500/10 border border-blue-500/25">
-                  <span class="text-xs font-mono text-blue-700 dark:text-blue-300">📸 This slide has 2 production views:</span>
+                  <span class="text-xs font-mono text-blue-700 dark:text-blue-300 flex items-center gap-1.5">${SVG_ICONS.layers} <span>This slide has 2 production views:</span></span>
                   <div class="flex items-center gap-1.5">
                     <button onclick="setSecondaryImg(false)" class="px-3 py-1 rounded-lg text-xs font-semibold transition-all ${!state.showSecondaryImg ? "bg-blue-600 text-white" : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300"}">Primary View</button>
                     <button onclick="setSecondaryImg(true)" class="px-3 py-1 rounded-lg text-xs font-semibold transition-all ${state.showSecondaryImg ? "bg-blue-600 text-white" : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300"}">Secondary View</button>
@@ -1707,7 +1781,8 @@ function renderApp() {
                 <div class="relative h-80 sm:h-[420px] rounded-2xl bg-slate-100 dark:bg-[#050a17] flex items-center justify-center overflow-hidden border border-slate-200/70 dark:border-blue-500/20">
                   <img src="${currentCert.image}" alt="${currentCert.title}" class="max-h-full max-w-full object-contain p-2 transition-transform duration-300 hover:scale-[1.02]" />
                   <button onclick="openLightbox('${currentCert.image}', '${currentCert.title}')" class="absolute top-3 right-3 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-900/90 hover:bg-blue-600 text-white text-xs font-mono shadow-lg transition-all">
-                    <span>🔍 Fullscreen</span>
+                    ${SVG_ICONS.maximize}
+                    <span>Fullscreen</span>
                   </button>
                 </div>
                 <div class="mt-4 flex flex-wrap items-center justify-between gap-2">
@@ -1786,10 +1861,12 @@ function renderApp() {
 
               <div class="flex flex-wrap items-center gap-3 pt-2">
                 <a href="${PROFILE_DATA.portfolioPdfUrl}" target="_blank" class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-white text-slate-900 hover:bg-blue-50 text-xs sm:text-sm font-bold shadow-lg transition-all">
-                  <span>⬇ Download Portfolio PDF</span>
+                  ${SVG_ICONS.download}
+                  <span>Download Portfolio PDF</span>
                 </a>
                 <a href="${PROFILE_DATA.cvUrl}" target="_blank" class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-blue-600/50 hover:bg-blue-600/70 text-white border border-white/25 text-xs sm:text-sm font-semibold transition-all">
-                  <span>📄 Download CV</span>
+                  ${SVG_ICONS.fileText}
+                  <span>Download CV</span>
                 </a>
               </div>
             </div>

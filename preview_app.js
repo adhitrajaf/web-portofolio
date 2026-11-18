@@ -42,8 +42,9 @@ const PROFILE_DATA = {
       label: "Middleware R&D & Enterprise IT/BA",
       detail: "Care Technologies × Zurich Indonesia",
       accent: "from-blue-500 to-cyan-400",
-      logo: "/assets/logos/logo-zurich.svg",
-      logoAlt: "Zurich Indonesia",
+      logo: "/assets/logos/logo-care-full.png",
+      secondaryLogo: "/assets/logos/logo-zurich.svg",
+      logoAlt: "PT Care Technologies × Zurich Indonesia",
       expandedText: "IT Programmer in Middleware R&D Department at PT Care Technologies & Dedicated IT and Business Analyst at Zurich Indonesia (Sept 2026 – Present)."
     },
     {
@@ -111,6 +112,7 @@ const EXPERIENCES = [
     id: "zurich-indonesia",
     role: "IT & Business Analyst (Dedicated Middleware Specialist)",
     company: "Zurich Indonesia",
+    logo: "/assets/logos/logo-zurich.svg",
     departmentOrTeam: "IT and Business Analyst Team",
     clientBadge: "Dedicated via PT Care Technologies",
     period: "Sept 2026 – Present",
@@ -136,6 +138,7 @@ const EXPERIENCES = [
     id: "care-technologies",
     role: "IT Programmer",
     company: "PT Care Technologies",
+    logo: "/assets/logos/logo-care-full.png",
     departmentOrTeam: "Middleware Research and Development (R&D) Department",
     clientBadge: "Core Engineering Employer",
     period: "Sept 2026 – Present",
@@ -1207,9 +1210,13 @@ function renderApp() {
                 <div>
                   <div class="h-1 w-14 rounded-full bg-gradient-to-r ${stat.accent} mb-4"></div>
                   <div class="flex items-center justify-between gap-2 mb-1.5">
-                    <div class="text-2xl font-display font-bold text-slate-900 dark:text-white">${stat.value}</div>
-                    <div class="h-10 min-w-[40px] px-2 rounded-xl bg-white dark:bg-white/95 border border-slate-200/80 dark:border-blue-400/30 shadow-sm flex items-center justify-center shrink-0">
-                      <img src="${stat.logo}" alt="${stat.logoAlt || stat.label}" class="max-h-6 max-w-[64px] w-auto object-contain" />
+                    <div class="text-xl xl:text-2xl font-display font-bold text-slate-900 dark:text-white whitespace-nowrap">${stat.value}</div>
+                    <div class="h-10 px-2.5 rounded-xl bg-white dark:bg-white/95 border border-slate-200/80 dark:border-blue-400/30 shadow-sm flex items-center justify-center gap-1.5 shrink-0">
+                      <img src="${stat.logo}" alt="${stat.logoAlt || stat.label}" class="${stat.secondaryLogo ? "h-5 max-w-[58px]" : "max-h-6 max-w-[64px]"} w-auto object-contain" />
+                      ${stat.secondaryLogo ? `
+                        <span class="w-px h-4 bg-slate-300"></span>
+                        <img src="${stat.secondaryLogo}" alt="Zurich Indonesia" class="h-5 max-w-[54px] w-auto object-contain" />
+                      ` : ""}
                     </div>
                   </div>
                   <div class="text-xs sm:text-sm font-bold text-blue-600 dark:text-blue-400">${stat.label}</div>
@@ -1344,7 +1351,12 @@ function renderApp() {
                           ${exp.clientBadge ? `<span class="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 border border-indigo-500/25">${exp.clientBadge}</span>` : ""}
                           <span class="inline-flex items-center gap-1 text-xs font-mono text-slate-400">${SVG_ICONS.mapPin} <span>${exp.location}</span></span>
                         </div>
-                        <div class="flex flex-wrap items-baseline gap-2 pt-0.5">
+                        <div class="flex flex-wrap items-center gap-2.5 pt-0.5">
+                          ${exp.logo ? `
+                            <span class="h-8 px-2.5 rounded-lg bg-white border border-slate-200/80 shadow-sm inline-flex items-center justify-center shrink-0">
+                              <img src="${exp.logo}" alt="${exp.company}" class="h-5 max-w-[68px] w-auto object-contain" />
+                            </span>
+                          ` : ""}
                           <h3 class="font-display font-bold text-lg sm:text-xl text-blue-600 dark:text-blue-400">${exp.company}</h3>
                           <span class="text-slate-400">—</span>
                           <span class="font-display font-bold text-base sm:text-lg text-slate-900 dark:text-white">${exp.role}</span>
@@ -1423,42 +1435,37 @@ function renderApp() {
           </div>
         </div>
 
-        <!-- Category Selector Bento Tabs (Official Tech Logos + Vector Icons, Zero Emojis) -->
+        <!-- Category Selector Bento Tabs (Universal Clean Vector Icons — No Single-Brand Logos, No Emojis) -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 mb-8">
           ${[
             {
               id: "middleware",
               label: "Middleware, Backend & Languages",
               badge: "Core Focus",
-              logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dotnetcore/dotnetcore-original.svg",
               svg: SVG_ICONS.terminal,
             },
             {
               id: "database",
               label: "SQL Server, Data & Cloud/MLOps",
               badge: "Data & Infra",
-              logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg",
               svg: SVG_ICONS.database,
             },
             {
               id: "aiml",
               label: "ML Frameworks & AI",
               badge: "AI Capability",
-              logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg",
               svg: SVG_ICONS.cpu,
             },
             {
               id: "industrial",
               label: "Electrical & Industrial PLC/DCS",
               badge: "Hardware",
-              logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/arduino/arduino-original.svg",
               svg: SVG_ICONS.sliders,
             },
             {
               id: "all",
               label: `All Personal Skills (${SKILLS.length})`,
               badge: "Full Stack",
-              logo: null,
               svg: SVG_ICONS.grid,
             },
           ].map((cat) => {
@@ -1467,17 +1474,15 @@ function renderApp() {
               <button onclick="setSkillCat('${cat.id}')" class="bento-card p-4 rounded-2xl border text-left transition-all duration-200 active:scale-[0.98] ${
                 active
                   ? "bg-gradient-to-br from-blue-600 to-indigo-600 text-white border-blue-400 shadow-xl shadow-blue-600/25"
-                  : "bg-white dark:bg-[#081126] border-slate-200/80 dark:border-blue-500/20 text-slate-700 dark:text-slate-300"
+                  : "bg-white dark:bg-[#081126] border-slate-200/80 dark:border-blue-500/20 text-slate-700 dark:text-slate-300 hover:border-blue-500/50"
               }">
                 <div class="flex items-center justify-between mb-2.5">
-                  <span class="w-8 h-8 rounded-xl flex items-center justify-center ${
-                    cat.logo
-                      ? "bg-white p-1.5 shadow-sm border border-slate-200/80"
-                      : active
-                      ? "bg-white/20 text-white"
-                      : "bg-blue-500/10 text-blue-600 dark:text-cyan-400 border border-blue-500/20"
+                  <span class="w-8 h-8 rounded-xl flex items-center justify-center transition-colors ${
+                    active
+                      ? "bg-white/20 text-white border border-white/25"
+                      : "bg-blue-500/10 text-blue-600 dark:text-cyan-400 border border-blue-500/25"
                   }">
-                    ${cat.logo ? `<img src="${cat.logo}" alt="${cat.label}" class="w-full h-full object-contain" />` : cat.svg}
+                    ${cat.svg}
                   </span>
                   <span class="text-[10px] font-mono px-2.5 py-0.5 rounded-full ${active ? "bg-white/20 text-white" : "bg-blue-500/10 text-blue-600 dark:text-blue-400"}">${cat.badge}</span>
                 </div>
